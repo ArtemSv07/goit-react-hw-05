@@ -1,0 +1,13 @@
+.btn {
+  margin: 20px auto 20px auto;
+  display: block;
+  background-color: rgb(72, 72, 72);
+  transition: background-color, border-color 300ms linear;
+}
+
+.btn:focus,
+.btn:hover {
+  border-color: beige;
+  outline: transparent;
+  background-color: rgb(54, 54, 54);
+}

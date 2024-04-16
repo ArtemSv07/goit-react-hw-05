@@ -1,0 +1,14 @@
+.container {
+  padding: 25px 20px;
+}
+
+.list {
+  margin-bottom: 30px;
+}
+
+.boxText {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 10px;
+}

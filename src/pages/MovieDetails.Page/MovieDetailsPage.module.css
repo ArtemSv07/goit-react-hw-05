@@ -1,0 +1,77 @@
+.container {
+  padding: 30px 20px;
+}
+
+.movie {
+  display: flex;
+  margin-top: 20px;
+
+  padding-bottom: 30px;
+}
+
+.boxText {
+  margin-left: 20px;
+}
+
+.paragraf {
+  max-width: 800px;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.listText {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.link {
+  display: flex;
+  gap: 20px;
+}
+
+.noActive {
+  border-radius: 10px;
+  padding: 5px;
+  color: rgb(11, 11, 11);
+}
+.noActive:hover {
+  text-decoration: underline;
+}
+.active {
+  color: orange;
+}
+
+.additionalText {
+  color: #859398;
+}
+
+.additional {
+  padding: 20px 20px;
+  border-bottom: 1px solid #000;
+  display: flex;
+  gap: 10px;
+  background: linear-gradient(to right, #859398, #283048);
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: #000;
+  font-size: small;
+  transition: color 300ms linear;
+}
+
+.btn:hover,
+.btn:focus {
+  color: orange;
+  outline: transparent;
+}

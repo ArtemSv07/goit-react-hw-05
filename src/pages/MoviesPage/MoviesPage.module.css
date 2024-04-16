@@ -1,0 +1,35 @@
+.containerForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.form {
+  position: relative;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  padding: 0;
+}
+
+.btn:focus {
+  outline: transparent;
+}
+.input {
+  padding: 10px 20px 10px 40px;
+  border-radius: 10px;
+  border: 1px rgb(109, 109, 109) solid;
+  background: #fcfcfc;
+  color: black;
+}
+
+.input:focus {
+  outline: transparent;
+  border-color: #0f0f0f;
+}
