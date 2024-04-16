@@ -3,6 +3,7 @@ import { searchMovies } from "../../movies-api";
 import { Formik, Form, Field } from "formik";
 import toast, { Toaster } from "react-hot-toast";
 import { FcSearch } from "react-icons/fc";
+import { useSearchParams } from "react-router-dom";
 import MoviesList from "../../components/MovieList/MovieList";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import Error from "../../components/Error/Error";
@@ -11,13 +12,30 @@ import css from "./MoviesPage.module.css";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
-  const [valueInput, setValueInput] = useState("");
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const valueInput = searchParams.get("value");
+
+  const handleSubmit = (value, actions) => {
+    setTotalPage(0);
+    setMovies([]);
+    setPage(1);
+    !value.name
+      ? toast("Text must be entered to search for movies")
+      : setSearchParams({ value: value.name });
+
+    actions.resetForm();
+  };
+
+  const nextPage = () => {
+    setPage(page + 1);
+  };
 
   useEffect(() => {
+    if (!valueInput) return;
     const handleSearch = async () => {
       try {
         setError(false);
@@ -35,22 +53,7 @@ const MoviesPage = () => {
       }
     };
     handleSearch();
-  }, [valueInput, page]);
-
-  const nextPage = () => {
-    setPage(page + 1);
-  };
-
-  const handleSubmit = (value, actions) => {
-    setTotalPage(0);
-    setMovies([]);
-    setPage(1);
-    !value.name
-      ? toast("Text must be entered to search for movies")
-      : setValueInput(value.name);
-
-    actions.resetForm();
-  };
+  }, [searchParams, page]);
 
   return (
     <div>

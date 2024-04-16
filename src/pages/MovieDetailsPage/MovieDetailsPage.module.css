@@ -57,21 +57,20 @@
   background: linear-gradient(to right, #859398, #283048);
 }
 
-.btn {
+.link {
   background-color: transparent;
   border: none;
   padding: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 3px;
   color: #000;
   font-size: small;
   transition: color 300ms linear;
 }
 
-.btn:hover,
-.btn:focus {
+.link:hover,
+.link:focus {
   color: orange;
   outline: transparent;
 }

@@ -1,5 +1,11 @@
-import { useParams, useNavigate, NavLink, Outlet } from "react-router-dom";
-import { useState, useEffect } from "react";
+import {
+  useParams,
+  NavLink,
+  Link,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 import { Suspense } from "react";
 import { PiArrowFatLinesLeftFill } from "react-icons/pi";
 import css from "./MovieDetailsPage.module.css";
@@ -14,13 +20,16 @@ const buildLinkClass = ({ isActive }) => {
 };
 
 const MovieDetailsPage = () => {
-  const navigate = useNavigate();
   const { movieId } = useParams();
   const [movies, setMovies] = useState([]);
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
+  const location = useLocation();
+  const backLinkRef = useRef("/movies");
 
-  const goBack = () => navigate(-1);
+  useEffect(() => {
+    backLinkRef.current = location.state || "/movies";
+  }, [location.state]);
 
   useEffect(() => {
     const handleSearch = async () => {
@@ -44,9 +53,9 @@ const MovieDetailsPage = () => {
       {!error ? (
         <>
           <div className={css.container}>
-            <button className={css.btn} onClick={goBack}>
+            <Link className={css.link} to={backLinkRef.current}>
               <PiArrowFatLinesLeftFill /> Go back
-            </button>
+            </Link>
             {loader && <Loader />}
 
             <div className={css.movie}>
@@ -72,7 +81,6 @@ const MovieDetailsPage = () => {
             </div>
           </div>
           <div className={css.additional}>
-            {/* <p className={css.additionalText}>Additional information:</p> */}
             <ul className={css.link}>
               <li>
                 <NavLink to="cast" className={buildLinkClass}>
